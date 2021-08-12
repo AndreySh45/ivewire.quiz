@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Quiz\Question;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', \App\Http\Livewire\Quiz\Question::class);
+Route::get('/', Question::class);
