@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(QuestionsRepository::class, fn ($app) => new RedisQuestionsRepository());
+        $this->app->bind(QuestionsRepository::class, fn ($app) => new RedisQuestionsRepository()); //Объявление реализации Readis
     }
 }
