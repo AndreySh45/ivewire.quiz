@@ -9,16 +9,35 @@ class Question extends Component
 {
 
     public string $question;
-    public array $options;
+    public array $options =[];
     public $answer;
     public $keyCurrentQuestion; //ключ текущего вопроса
     public $questions;
     public $result; //Результат
 
+    /**
+     * @var mixed|string
+     */
+    public $currentResult;
+
     public function mount(QuestionsRepository $questionsRepository)
     {
         $this->questions = $questionsRepository->all();
+    }
+
+    public function loadQuestion()
+    {
         $this->toggleQuestion();
+    }
+
+    public function getQuestions(QuestionsRepository $questionsRepository)
+    {
+        $this->questions = $questionsRepository->all();
+    }
+
+    public function getCurrentResult()
+    {
+        $this->currentResult = sprintf('Всего %s из %s', $this->keyCurrentQuestion,  count($this->questions));
     }
 
     public function toggleQuestion() //смена указателя на следующий вопрос
