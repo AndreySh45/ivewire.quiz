@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\DTO\Quiz\QuestionDto;
 use Illuminate\Database\Seeder;
 use App\Contracts\Repositories\QuestionsRepository;
 
@@ -40,7 +41,7 @@ class QuestionsSeeder extends Seeder
     public function run(QuestionsRepository $questionsRepository)
     {
         foreach ($this->questions as $question) {
-            $questionsRepository->addQuestion($question);
+            $questionsRepository->addQuestion(new QuestionDto($question));
         }
     }
 }

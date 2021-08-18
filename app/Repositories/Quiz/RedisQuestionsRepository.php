@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories\Quiz;
 
-use App\Contracts\Repositories\QuestionsRepository;
+use App\DTO\Quiz\QuestionDto;
 use Illuminate\Support\Facades\Redis;
+use App\Contracts\Repositories\QuestionsRepository;
 
 class RedisQuestionsRepository implements QuestionsRepository
 {
@@ -26,10 +27,10 @@ class RedisQuestionsRepository implements QuestionsRepository
         return json_decode($this->redis->get(self::KEY), true);
     }
 
-    public function addQuestion(array $newQuestion)
+    public function addQuestion(QuestionDto $questionDto)
     {
         $all = $this->all();
-        $all[] = $newQuestion;
+        $all[] = $questionDto->toArray();
         $result = json_encode($all);
 
         $this->redis->del(self::KEY);

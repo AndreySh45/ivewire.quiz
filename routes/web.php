@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', Question::class);
+Route::get('/question/create', fn () => view('quiz.question-create'));
