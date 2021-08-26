@@ -46,6 +46,10 @@
             <div class="m-3">{{ $currentResult }}</div>
         @endif
     </div>
+    <div>
+        {{-- @livewire('toast', ['title' => 'Уведомление', 'message' => 'Тест пройден!']) --}}
+        {{-- @livewire('toast') --}}
+    </div>
 </div>
 
 

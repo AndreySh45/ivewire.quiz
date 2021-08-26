@@ -54,6 +54,9 @@ class Question extends Component
         }
         if (is_null($currentQuestion)) { //Если вопрпосов не осталось, подсчитаем все ответы
             $this->result = $this->calculateRightAnswers($this->questions);
+            //$this->emit('quizPassed');
+            //$this->emit('quizPassed', 'Уведомление', 'Тест пройден!');
+            $this->dispatchBrowserEvent('toast', ['title' => 'Уведомление', 'message' => 'Тест пройден']);
         }
     }
 
